@@ -166,7 +166,6 @@ const getBookByIdHandler = (request, h) => {
 const editBookByIdHandler = (request, h) => {
     const { bookId } = request.params;
     
-    const finished = pageCount === readPage;
     const { name, year, author, summary, publisher, pageCount, readPage, reading } = request.payload;
     const insertedAt = new Date().toISOString();
     const updatedAt = insertedAt;
