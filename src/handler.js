@@ -166,10 +166,10 @@ const getBookByIdHandler = (request, h) => {
 const editBookByIdHandler = (request, h) => {
     const { bookId } = request.params;
     
+    const finished = pageCount === readPage;
     const { name, year, author, summary, publisher, pageCount, readPage, reading } = request.payload;
-    const updatedAt = new Date().toISOString();
-
-    const index = books.findIndex((buku) => buku.id === bookId);
+    const insertedAt = new Date().toISOString();
+    const updatedAt = insertedAt;
 
     if (!name) {
         const response = h.response({
@@ -187,6 +187,9 @@ const editBookByIdHandler = (request, h) => {
         response.code(400);
         return response;
     }
+
+    const index = books.findIndex((buku) => buku.id === bookId);
+
     if (index !== -1) {
         books[index] = {
             ...books[index],
