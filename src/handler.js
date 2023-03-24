@@ -188,7 +188,7 @@ const editBookByIdHandler = (request, h) => {
     const updatedAt = new Date().toISOString();
     const index = books.findIndex((buku) => buku.id === bookId);
 
-    if (index !== -1) {
+    if (index === -1) {
         books[index] = {
             ...books[index],
             name,
