@@ -188,7 +188,7 @@ const editBookByIdHandler = (request, h) => {
     const updatedAt = new Date().toISOString();
     const index = books.findIndex((buku) => buku.id === bookId);
 
-    if (index === -1) {
+    if (index !== -1) {
         books[index] = {
             ...books[index],
             name,
@@ -202,17 +202,17 @@ const editBookByIdHandler = (request, h) => {
             updatedAt,
         };
         const response = h.response({
-            status: 'success',
-            message: 'Buku berhasil diperbarui',
+            status: 'fail',
+            message: 'Gagal memperbarui buku. Id tidak ditemukan',
         });
-        response.code(200);
+        response.code(404);
         return response;
     }
     const response = h.response({
-        status: 'fail',
-        message: 'Gagal memperbarui buku. Id tidak ditemukan',
+        status: 'success',
+        message: 'Buku berhasil diperbarui',
     });
-    response.code(404);
+    response.code(200);
     return response;
 };
 
