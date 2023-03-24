@@ -185,6 +185,7 @@ const editBookByIdHandler = (request, h) => {
         return response;
     }
  
+    const finished = (pageCount === readPage);
     const updatedAt = new Date().toISOString();
     const index = books.findIndex((buku) => buku.id === bookId);
 
@@ -198,21 +199,22 @@ const editBookByIdHandler = (request, h) => {
             publisher,
             pageCount,
             readPage,
+            finished,
             reading,
             updatedAt,
         };
         const response = h.response({
-            status: 'fail',
-            message: 'Gagal memperbarui buku. Id tidak ditemukan',
+            status: 'success',
+            message: 'Buku berhasil diperbarui',
         });
-        response.code(404);
+        response.code(200);
         return response;
     }
     const response = h.response({
-        status: 'success',
-        message: 'Buku berhasil diperbarui',
+        status: 'fail',
+        message: 'Gagal memperbarui buku. Id tidak ditemukan',
     });
-    response.code(200);
+    response.code(404);
     return response;
 };
 
