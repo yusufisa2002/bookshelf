@@ -187,7 +187,7 @@ const editBookByIdHandler = (request, h) => {
         return response;
     }else if (readPage > pageCount) {
         const response = h.response({
-            status: 'fsil',
+            status: 'fail',
             message:
             'Gagal memperbarui buku. readPage tidak boleh lebih besar dari pageCount',
         });
