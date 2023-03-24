@@ -166,7 +166,7 @@ const getBookByIdHandler = (request, h) => {
 const editBookByIdHandler = (request, h) => {
     const { bookId } = request.params;
     
-    const { name, year, author, summary, publisher, pageCount, readPage, finished, reading } = request.payload;
+    const { name, year, author, summary, publisher, pageCount, readPage, reading } = request.payload;
 
     if (!name) {
         const response = h.response({
@@ -198,7 +198,6 @@ const editBookByIdHandler = (request, h) => {
             publisher,
             pageCount,
             readPage,
-            finished,
             reading,
             updatedAt,
         };
