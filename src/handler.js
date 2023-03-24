@@ -1,5 +1,5 @@
-const { books } = require('./books');
 const { nanoid } = require('nanoid');
+const books = require('./books');
 
 const addBookHandler = (request, h) => {
     const { name, year, author, summary, publisher, pageCount, readPage, reading } = request.payload;
