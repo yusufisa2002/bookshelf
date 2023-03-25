@@ -71,7 +71,7 @@ const getAllBooksHandler = (request, h) => {
     const { name, reading, finished } = request.query;
 
     if (name !== undefined) {
-        const books = books.filter((buku) => buku.name.toLowerCase() === name);
+        const books = books.filter((book) => book.name.toLowerCase() === name);
         return {
             status: 'success',
             data: {
@@ -83,7 +83,7 @@ const getAllBooksHandler = (request, h) => {
         };
     } else if (reading !== undefined) {
         if (reading === 0) {
-            const books = books.filter((buku) => buku.reading === false);
+            const books = books.filter((book) => book.reading === false);
             return {
                 status: 'success',
                 data: {
@@ -94,7 +94,7 @@ const getAllBooksHandler = (request, h) => {
                 },
             };
         }
-        const books = books.filter((buku) => buku.reading === true);
+        const books = books.filter((book) => book.reading === true);
         return {
             status: 'success',
             data: {
@@ -106,7 +106,7 @@ const getAllBooksHandler = (request, h) => {
         };
     } else if (finished !== undefined) {
         if (finished === 0) {
-            const books = books.filter((buku) => buku.finished === false);
+            const books = books.filter((book) => book.finished === false);
             return {
                 status: 'success',
                 data: {
@@ -117,7 +117,7 @@ const getAllBooksHandler = (request, h) => {
                 },
             };
         }
-        const books = books.filter((buku) => buku.reading === true);
+        const books = books.filter((book) => book.reading === true);
         return {
             status: 'success',
             data: {
@@ -145,7 +145,7 @@ const getAllBooksHandler = (request, h) => {
 const getBookByIdHandler = (request, h) => {
     const { id } = request.params;
 
-    const book = books.filter((buku) => buku.id === id)[0];
+    const book = books.filter((book) => book.id === id)[0];
 
     if (book !== undefined) {
         return {
@@ -186,7 +186,7 @@ const editBookByIdHandler = (request, h) => {
     }
  
     const updatedAt = new Date().toISOString();
-    const index = books.findIndex((buku) => buku.id === id);
+    const index = books.findIndex((book) => book.id === id);
 
     if (index === -1) {
         books[index] = {
@@ -218,7 +218,7 @@ const editBookByIdHandler = (request, h) => {
 
 const deleteBookByIdHandler = (request, h) => {
     const { id } = request.params;
-    const index = books.findIndex((buku) => buku.id === id);
+    const index = books.findIndex((book) => book.id === id);
     if (index !== -1) {
         books.splice(index, 1);
         const response = h.response({
