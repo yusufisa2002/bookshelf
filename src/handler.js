@@ -185,10 +185,11 @@ const editBookByIdHandler = (request, h) => {
         return response;
     }
  
+    const finished = (pageCount === readPage);
     const updatedAt = new Date().toISOString();
     const index = books.findIndex((buku) => buku.id === bookId);
 
-    if (index !== -1) {
+    if (index === -1) {
         books[index] = {
             ...books[index],
             name,
@@ -198,6 +199,7 @@ const editBookByIdHandler = (request, h) => {
             publisher,
             pageCount,
             readPage,
+            finished,
             reading,
             updatedAt,
         };
